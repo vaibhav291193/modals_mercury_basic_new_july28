@@ -18,7 +18,7 @@
   border: 0px solid red;
   padding: 10px;
 }
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 641px) {
   .example-container {
     width: 270px;
   }
@@ -46,57 +46,61 @@ Do not delete the following comment. It is essential for tracking purposes.
   min-height: 100vh;
 }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 641px) {
   [role="alertdialog"],
   [role="dialog"] {
     padding: 16px;
   }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 641px) {
   [role="alertdialog"],
   [role="dialog"] {
-    position: absolute;
-    top: 10%;
+    position: relative;
     
     left: 50vw;
     right: 50vw;
     
-    /* == breakpoint - left+right margin */
-    /* min-width: calc(640px - (40px * 2)); */
-
-    width: 80%;  /* == breakpoint - left+right margin */
+    width: 80%;  
     max-width: 768px;
 
     min-height: auto;
 
-    transform: translateX(-50%);  /* move backwards 50% of this element's width */
+    transform: translateX(-50%);  
     -webkit-transform: translateX(-50%);
 
     filter: blur(0);
     -webkit-filter: blur(0);
+
+    margin: 64px 0;
   }
 }
 
 .dialog_label {
   font-family: Roboto;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.33;
+  line-height: 32px;
   letter-spacing: 0.2px;
   color: #111111;
   text-align: left;
+  
+  outline: none;
 
   padding: 0;
   margin: 0;
   margin-right: 24px;
 }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 641px) {
   .dialog_label {
     margin-right: 48px;
+
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.4px;
   }
 }
 
@@ -120,6 +124,9 @@ Do not delete the following comment. It is essential for tracking purposes.
 .dialog_desc p:first-of-type{
   margin-top: 0;
 }
+.dialog_desc p:last-of-type{
+  margin-bottom: 0;
+}
 
 /* native <dialog> element uses the ::backdrop pseudo-element */
 
@@ -134,7 +141,7 @@ Do not delete the following comment. It is essential for tracking purposes.
   left: 0;
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 641px) {
   .dialog-backdrop {
     background: rgba(17, 17, 17, 0.75);
   }
@@ -302,4 +309,33 @@ button.closebtn:hover,
 
 .micro-buttons.by-keyboard:focus {
   box-shadow: 0 0 0 0px #fff, 0 0 0 0px #0467c6 !important;
+}
+
+@media only screen and (max-width: 641px) {
+  button,
+  .button {
+    min-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  button:last-of-type,
+  .button:last-of-type {
+    margin-bottom: 0px;
+  }
+
+
+  button + button,
+  .button + .button {
+    margin-left: 0px;
+  }
+
+  .btn-group button, 
+  .btn-group .button {
+    min-width: 84px;
+  }
+
+  .btn-group button, 
+  .btn-group .button {
+    min-width: 100%;
+  }
 }

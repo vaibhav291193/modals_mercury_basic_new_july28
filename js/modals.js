@@ -7,6 +7,8 @@ var aria = aria || {};
 
 aria.Utils = aria.Utils || {};
 
+var ariaContainer = 'ds-container';
+
 (function () {
     /*
      * When util functions move focus around, set this true so the focus listener
@@ -162,6 +164,9 @@ aria.Utils = aria.Utils || {};
         // Disable scroll on the body element
         document.body.classList.add(aria.Utils.dialogOpenClass);
 
+        // Setting container aria hidden so on mobile device wont read the background text and elements - Nauman
+        document.getElementsByClassName(ariaContainer).item(0).setAttribute("aria-hidden", "true");
+
         if (typeof focusAfterClosed === 'string') {
             this.focusAfterClosed = document.getElementById(focusAfterClosed);
         }
@@ -247,6 +252,9 @@ aria.Utils = aria.Utils || {};
         }
         else {
             document.body.classList.remove(aria.Utils.dialogOpenClass);
+
+            // For background text not readable - Nauman
+            document.getElementsByClassName(ariaContainer).item(0).removeAttribute("aria-hidden", "true");
         }
     }; // end close
 

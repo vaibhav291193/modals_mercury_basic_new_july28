@@ -9,9 +9,6 @@
 </head>
 
 <body>
-    <button onclick="openDialog('dialog1', this, 'dialog1_label')">
-        Open Modal
-    </button>
     <div class="ds-container">
         <div class="example-container">
             <button onclick="openDialog('dialog1', this, 'dialog1_label')">
@@ -28,7 +25,7 @@
     <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
         <button id="dialog1_label_closed" aria-label="Close modal" class="closebtn micro-buttons"></button>
         <h2 tabindex="-1" id="dialog1_label" class="dialog_label">
-            Add Delivery Address
+            Are you sure?
         </h2>
         <div id="dialog1_desc" class="dialog_desc">
             <p>
