@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ds-container {
+  width: 98%;
+  margin: 0 auto;
+  border: 0px solid #ccc;
+  padding: 3% 1%;
+}
+.example-container {
+  width: 450px;
+  margin: 0 auto;
+  border: 0px solid red;
+  padding: 10px;
+}
+@media only screen and (max-width: 40em) {
+  .example-container {
+    width: 270px;
+  }
+}
+h1{
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+
+/* 
+Do not delete the following comment. It is essential for tracking purposes.
+#Merc2021DoNotDelete 
+*/
+
+.hidden {
+  display: none;
+}
+
+[role="alertdialog"],
+[role="dialog"] {
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 40em) {
+  [role="alertdialog"],
+  [role="dialog"] {
+    padding: 16px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  [role="alertdialog"],
+  [role="dialog"] {
+    position: absolute;
+    top: 10%;
+    
+    left: 50vw;
+    right: 50vw;
+    
+    /* == breakpoint - left+right margin */
+    /* min-width: calc(640px - (40px * 2)); */
+
+    width: 80%;  /* == breakpoint - left+right margin */
+    max-width: 768px;
+
+    min-height: auto;
+
+    transform: translateX(-50%);  /* move backwards 50% of this element's width */
+    -webkit-transform: translateX(-50%);
+
+    filter: blur(0);
+    -webkit-filter: blur(0);
+  }
+}
+
+.dialog_label {
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: 0.2px;
+  color: #111111;
+  text-align: left;
+
+  padding: 0;
+  margin: 0;
+  margin-right: 24px;
+}
+
+@media only screen and (max-width: 40em) {
+  .dialog_label {
+    margin-right: 48px;
+  }
+}
+
+.dialog_form_actions {
+  text-align: left;
+}
+
+
+.dialog_desc {
+  padding: 24px 0px;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #333333;
+}
+
+.dialog_desc p:first-of-type{
+  margin-top: 0;
+}
+
+/* native <dialog> element uses the ::backdrop pseudo-element */
+
+/* dialog::backdrop, */
+.dialog-backdrop {
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 640px) {
+  .dialog-backdrop {
+    background: rgba(17, 17, 17, 0.75);
+  }
+}
+
+.dialog-backdrop.active {
+  display: block;
+}
+
+.no-scroll {
+  overflow-y: auto !important;
+}
+
+/* this is added to the body when a dialog is open */
+.has-dialog {
+  overflow: hidden;
+}
+
+
+
+/* Buttons */
+button,
+.button {
+  font-family: Roboto !important;
+  min-width: 84px;
+  max-height: 44px;
+  line-height: 24px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  width: auto;
+  border-radius: 2px;
+  border: 0px !important;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px !important;
+  cursor: pointer;
+}
+
+button:only-of-type,
+.button:only-of-type,
+button:last-child,
+.button:last-child {
+  margin-bottom: 0px;
+}
+
+button + button,
+.button + .button {
+  margin-left: 12px;
+}
+button[aria-disabled="true"],
+a[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+
+/* Primary Button */
+.primary-button {
+  color: #ffffff;
+  background-color: #0467c6;
+}
+.primary-button:hover {
+  background-color: #004990;
+}
+
+.primary-button:focus {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0467c6;
+  background-color: #004990; 
+  outline: none;  
+}
+
+.primary-button.by-keyboard:focus {
+  box-shadow: 0 0 0 0px #fff, 0 0 0 0px #0467c6 !important;
+}
+
+.primary-button.disabled,
+.primary-button:disabled {
+  color: #666666;
+  background-color: #f0f0f0;
+}
+
+/* Secondary Button */
+.secondary-button {
+  background-color: #ffffff;
+  color: #0467c6;
+  box-shadow: inset 0 0 0 1px #0467c6;
+  border: none !important;
+}
+.secondary-button:hover {
+  color: #004990;
+  box-shadow: inset 0 0 0 2px #004990;
+  border: none;
+}
+.secondary-button:focus {
+  color: #004990;
+  box-shadow: inset 0 0 0 2px #004990, 0 0 0 2px #fff, 0 0 0 4px #0467c6; 
+  outline: none;
+}
+.secondary-button.by-keyboard:focus {
+  color: #004990;
+  box-shadow: inset 0 0 0 2px #004990 !important;
+  border: none;
+}
+.secondary-button.disabled,
+.secondary-button:disabled {
+  color: #666666;
+  border: 1px solid #666666;
+}
+
+/* Close Button */
+button.closebtn,
+.button.closebtn
+ {
+  float: right;
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background-image: url("../img/icons/close.svg");
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  background-color: transparent;
+  border: 0;
+  padding: 22px !important;
+  background-position: center;
+  cursor:auto
+}
+
+button.closebtn:hover,
+.button.closebtn:hover{
+  cursor: pointer;
+}
+
+/* Micro Buttons */
+.micro-buttons{
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #0467c6;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 1px;
+  vertical-align: middle;
+}
+
+.micro-buttons:hover{
+  text-decoration: underline;
+}
+
+.micro-buttons:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px #0467c6;
+  text-decoration: underline;
+  outline: none;  
+}
+
+.micro-buttons.by-keyboard:focus {
+  box-shadow: 0 0 0 0px #fff, 0 0 0 0px #0467c6 !important;
+}
