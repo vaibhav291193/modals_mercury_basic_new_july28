@@ -109,6 +109,16 @@ var ariaContainer = 'ds-container';
 
     document.addEventListener('keyup', aria.handleEscape);
 
+    /* Click Outside close */
+    aria.handleClickOutside = function (event) {
+        if (event.target.classList.value === 'dialog-backdrop active' && aria.closeCurrentDialog()) {
+            event.stopPropagation();
+        }
+    };
+
+    document.addEventListener('click', aria.handleClickOutside);
+
+
     /**
      * @constructor
      * @desc Dialog object providing modal focus management.
@@ -126,7 +136,7 @@ var ariaContainer = 'ds-container';
      *          DOM node to focus when the dialog opens. If not specified, the
      *          first focusable element in the dialog will receive focus.
      */
-    aria.Dialog = function (dialogId, focusAfterClosed, focusFirst) {
+    aria.Dialog = function (dialogId, dialogSize, focusAfterClosed, focusFirst) {
         this.dialogNode = document.getElementById(dialogId);
         if (this.dialogNode === null) {
             throw new Error('No element found with id="' + dialogId + '".');
@@ -165,7 +175,7 @@ var ariaContainer = 'ds-container';
         document.body.classList.add(aria.Utils.dialogOpenClass);
 
         // Setting container aria hidden so on mobile device wont read the background text and elements - Nauman
-        document.getElementsByClassName(ariaContainer).item(0).setAttribute("aria-hidden", "true");
+        document.getElementsByClassName(aria.Utils.dialogOpenClass).item(0).setAttribute("aria-hidden", "true");
 
         if (typeof focusAfterClosed === 'string') {
             this.focusAfterClosed = document.getElementById(focusAfterClosed);
@@ -209,7 +219,7 @@ var ariaContainer = 'ds-container';
         this.addListeners();
         aria.OpenDialogList.push(this);
         this.clearDialog();
-        this.dialogNode.className = 'default_dialog'; // make visible
+        this.dialogNode.className = `default_dialog modal-dialog modal-dialog-centered ${dialogSize}`; // make visible
 
         if (this.focusFirst) {
             this.focusFirst.focus();
@@ -251,10 +261,10 @@ var ariaContainer = 'ds-container';
             aria.getCurrentDialog().addListeners();
         }
         else {
-            document.body.classList.remove(aria.Utils.dialogOpenClass);
-
             // For background text not readable - Nauman
-            document.getElementsByClassName(ariaContainer).item(0).removeAttribute("aria-hidden", "true");
+            document.getElementsByClassName(aria.Utils.dialogOpenClass).item(0).removeAttribute("aria-hidden", "true");
+
+            document.body.classList.remove(aria.Utils.dialogOpenClass);
         }
     }; // end close
 
@@ -310,8 +320,8 @@ var ariaContainer = 'ds-container';
         }
     }; // end trapFocus
 
-    window.openDialog = function (dialogId, focusAfterClosed, focusFirst) {
-        var dialog = new aria.Dialog(dialogId, focusAfterClosed, focusFirst);
+    window.openDialog = function (dialogId, dialogSize, focusAfterClosed, focusFirst) {
+        var dialog = new aria.Dialog(dialogId, dialogSize, focusAfterClosed, focusFirst);
     };
 
     window.closeDialog = function (closeButton) {
@@ -329,6 +339,7 @@ var ariaContainer = 'ds-container';
         }
     }; // end replaceDialog
 }());
+
 
 /* Buttons */
 function init() {
